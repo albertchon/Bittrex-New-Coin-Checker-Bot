@@ -18,7 +18,7 @@ def check():
 	usdt_link = "https://bittrex.com/api/v1.1/public/getmarketsummary?market=usdt-{}".format(coin)
 
 	links = [btc_link, eth_link, usdt_link]
-	recipients = [MY_SPAIN_NUMBER, ZHONGHAN_NUMBER]
+	recipients = [os.environ.get('MY_SPAIN_NUMBER'), os.environ.get('ZHONGHAN_NUMBER')]
 	for link in links:
 		data = requests.get(link)
 		if(data.text != '{"success":false,"message":"INVALID_MARKET","result":null}'):
